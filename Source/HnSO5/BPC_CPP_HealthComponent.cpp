@@ -64,6 +64,7 @@ void UBPC_CPP_HealthComponent::TakeDamage(float DmgRecieved)
 	}
 
 	CurrentHealth -= DmgRecieved;
+	OnHealthChangedSignature.Broadcast(DmgRecieved);
 }
 
 void UBPC_CPP_HealthComponent::Heal(float HealRecieved)
@@ -73,4 +74,5 @@ void UBPC_CPP_HealthComponent::Heal(float HealRecieved)
 	}
 
 	CurrentHealth = FMath::Clamp(CurrentHealth + HealRecieved, 1.0f, MaxHealth);
+	OnHealthChangedSignature.Broadcast(HealRecieved);
 }

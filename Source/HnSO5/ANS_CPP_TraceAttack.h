@@ -56,4 +56,5 @@ protected:
 
 	UPROPERTY()
 	TArray<AActor*> ActorsToIgnore;
+
 };

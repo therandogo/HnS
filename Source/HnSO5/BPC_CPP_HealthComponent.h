@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "BPC_CPP_HealthComponent.generated.h"
-
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedSignature, float, delta);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class HNSO5_API UBPC_CPP_HealthComponent : public UActorComponent
@@ -56,4 +56,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "ChangeHealthFunctions")
 	void Heal(float HealRecieved);
+
+	UPROPERTY(BlueprintAssignable)
+	FOnHealthChangedSignature OnHealthChangedSignature;
 };

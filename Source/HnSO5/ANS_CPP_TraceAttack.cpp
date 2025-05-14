@@ -64,11 +64,12 @@ void UANS_CPP_TraceAttack::LoadAndUse() {
 
 void UANS_CPP_TraceAttack::TraceAttack(USkeletalMeshComponent* MeshComponent) 
 {
+
     FVector Startloc = MeshComponent->GetSocketLocation(BeginingSocket);
     FVector EndLoc = MeshComponent->GetSocketLocation(EndSocket);
 
     TArray<TEnumAsByte<EObjectTypeQuery>> DetectableObjects;
-    DetectableObjects.Add(UEngineTypes::ConvertToObjectType(ECC_WorldDynamic));
+    DetectableObjects.Add(UEngineTypes::ConvertToObjectType(ECC_Destructible));
     DetectableObjects.Add(UEngineTypes::ConvertToObjectType(ECC_Pawn));
 
     bool bTraceComplex = false;
@@ -102,6 +103,7 @@ void UANS_CPP_TraceAttack::TraceAttack(USkeletalMeshComponent* MeshComponent)
 
     for (const FHitResult& Hit : OutHits) {
         AActor* HitActor = Hit.GetActor();
+        UPrimitiveComponent* compo = Hit.GetComponent();
         
         if (HitActor) {
             UBPC_CPP_HealthComponent* HealthComp = HitActor->FindComponentByClass<UBPC_CPP_HealthComponent>();
