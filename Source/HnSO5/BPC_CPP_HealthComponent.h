@@ -59,4 +59,7 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChangedSignature OnHealthChangedSignature;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnHealthChangedSignature OnDeathSignature;
 };

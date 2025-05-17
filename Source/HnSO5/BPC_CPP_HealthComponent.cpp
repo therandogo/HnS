@@ -65,6 +65,9 @@ void UBPC_CPP_HealthComponent::TakeDamage(float DmgRecieved)
 
 	CurrentHealth -= DmgRecieved;
 	OnHealthChangedSignature.Broadcast(DmgRecieved);
+	if (IsDead()) {
+		OnDeathSignature.Broadcast(DmgRecieved);
+	}
 }
 
 void UBPC_CPP_HealthComponent::Heal(float HealRecieved)
